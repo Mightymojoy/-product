@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ITO CARE 服务 - 伊稻（上海）商业有限公司</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-black: #000000;
+      --color-white: #FFFFFF;
+      --color-gray-light: #EDEFEA;
+      --color-gray-mid: #8A8A8A;
+      --color-gray-dark: #262626;
+      --color-blue: #0075B3;
+      --color-blue-light: #E6F3FA;
+      --color-care-green: #2E7D32;
+      --color-care-light: #E8F5E9;
+      --font-cn: "Noto Sans SC", "Source Han Sans SC", sans-serif;
+      --font-en: "Helvetica Neue", "Arial", sans-serif;
+      --transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --nav-height: 72px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;font-size:16px}
+    body{font-family:var(--font-cn);color:var(--color-black);background:var(--color-white);line-height:1.6;overflow-x:hidden}
+    img{display:block;max-width:100%}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+
+    .nav{position:fixed;top:0;left:0;right:0;height:var(--nav-height);background:var(--color-white);border-bottom:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-between;padding:0 5%;z-index:1000;transition:var(--transition)}
+    .nav.scrolled{box-shadow:0 2px 20px rgba(0,0,0,0.08)}
+    .nav-logo{display:flex;align-items:center;gap:12px}
+    .nav-logo-mark{width:44px;height:44px;background:var(--color-black);display:flex;align-items:center;justify-content:center;border-radius:2px}
+    .nav-logo-mark span{color:var(--color-white);font-size:18px;font-weight:700;letter-spacing:2px;font-family:var(--font-en)}
+    .nav-logo-text{display:flex;flex-direction:column;line-height:1.2}
+    .nav-logo-text .brand-en{font-size:14px;font-weight:700;letter-spacing:4px;font-family:var(--font-en);color:var(--color-black)}
+    .nav-logo-text .brand-cn{font-size:10px;color:var(--color-gray-mid);letter-spacing:1px}
+    .nav-links{display:flex;align-items:center;gap:40px}
+    .nav-links a{font-size:14px;font-weight:400;letter-spacing:1px;color:var(--color-gray-dark);position:relative;transition:var(--transition)}
+    .nav-links a::after{content:"";position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--color-black);transition:width 0.3s ease}
+    .nav-links a:hover{color:var(--color-black)}
+    .nav-links a:hover::after{width:100%}
+    .nav-links a.active{color:var(--color-care-green);font-weight:500}
+    .nav-links a.active::after{width:100%}
+    .nav-cta{background:var(--color-care-green);color:var(--color-white)!important;padding:10px 24px;border-radius:2px;font-size:13px!important;letter-spacing:2px;transition:var(--transition)!important}
+    .nav-cta:hover{background:var(--color-blue)!important;color:var(--color-white)!important}
+    .nav-cta::after{display:none!important}
+
+    .hero{min-height:100vh;background:var(--color-black);display:flex;align-items:center;padding:0 5%;padding-top:var(--nav-height);position:relative;overflow:hidden}
+    .hero-care-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--color-black) 0%,#1a3a1a 50%,var(--color-black) 100%);}
+    .hero-grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:80px 80px;pointer-events:none}
+    .hero-bg-text{position:absolute;top:50%;right:-5%;transform:translateY(-50%);font-size:clamp(120px,18vw,220px);font-weight:900;color:rgba(46,125,50,0.08);font-family:var(--font-en);letter-spacing:-10px;white-space:nowrap;pointer-events:none;user-select:none}
+    .hero-content{position:relative;z-index:2;max-width:900px}
+    .hero-label{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--color-care-green);margin-bottom:32px;font-family:var(--font-en)}
+    .hero-label::before{content:"";width:40px;height:1px;background:var(--color-care-green)}
+    .hero-title{font-size:clamp(48px,6vw,88px);font-weight:700;color:var(--color-white);line-height:1.05;letter-spacing:-2px;margin-bottom:32px}
+    .hero-title em{font-style:normal;color:var(--color-care-green)}
+    .hero-desc{font-size:17px;color:rgba(255,255,255,0.6);line-height:1.8;max-width:600px;margin-bottom:48px;font-weight:300}
+    .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;font-size:13px;letter-spacing:2px;font-weight:500;cursor:pointer;transition:var(--transition);border:none;outline:none;font-family:var(--font-cn)}
+    .btn-care{background:var(--color-care-green);color:var(--color-white)}
+    .btn-care:hover{background:#1B5E20}
+    .btn-ghost{background:transparent;color:var(--color-white);border:1px solid rgba(255,255,255,0.3)}
+    .btn-ghost:hover{border-color:var(--color-white);background:rgba(255,255,255,0.1)}
+    .btn-arrow::after{content:"→";font-size:16px}
+    .hero-scroll{position:absolute;bottom:40px;left:5%;display:flex;align-items:center;gap:16px;color:rgba(255,255,255,0.4);font-size:11px;letter-spacing:3px;text-transform:uppercase;font-family:var(--font-en)}
+    .hero-scroll-line{width:40px;height:1px;background:rgba(255,255,255,0.2)}
+
+    .section{padding:100px 5%}
+    .container{max-width:1200px;margin:0 auto}
+    .section-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--color-care-green);margin-bottom:20px;font-family:var(--font-en)}
+    .section-title{font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1.15;letter-spacing:-0.5px;color:var(--color-black);margin-bottom:24px}
+    .section-subtitle{font-size:16px;color:var(--color-gray-mid);line-height:1.8;max-width:600px}
+
+    .care-intro{background:var(--color-white);padding:120px 5%}
+    .care-intro-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:80px;align-items:center}
+    .care-intro-visual{position:relative}
+    .care-intro-box{background:linear-gradient(135deg,var(--color-care-light) 0%,var(--color-white) 100%);border:1px solid rgba(46,125,50,0.15);padding:60px;border-radius:4px;position:relative;overflow:hidden}
+    .care-intro-box::before{content:"360";position:absolute;top:-20px;right:-20px;font-size:120px;font-weight:800;color:rgba(46,125,50,0.06);font-family:var(--font-en);line-height:1}
+    .care-intro-box .icon-circle{width:80px;height:80px;background:var(--color-care-green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:24px}
+    .care-intro-box .icon-circle svg{width:40px;height:40px;stroke:var(--color-white);fill:none;stroke-width:1.5}
+    .care-intro-box h3{font-size:24px;font-weight:700;margin-bottom:16px}
+    .care-intro-box p{font-size:15px;color:var(--color-gray-dark);line-height:1.8}
+    .care-intro-text{font-size:16px;color:var(--color-gray-dark);line-height:2;margin-bottom:32px}
+    .care-intro-highlight{background:linear-gradient(135deg,var(--color-care-green) 0%,#1B5E20 100%);color:var(--color-white);padding:32px;border-radius:4px;margin-top:32px}
+    .care-intro-highlight h4{font-size:18px;font-weight:600;margin-bottom:12px}
+    .care-intro-highlight p{font-size:14px;opacity:0.9;line-height:1.8}
+
+    .scope-section{background:var(--color-gray-light);padding:100px 5%}
+    .scope-inner{max-width:1200px;margin:0 auto}
+    .scope-header{margin-bottom:64px}
+    .scope-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .scope-card{background:var(--color-white);padding:40px 32px;text-align:center;transition:var(--transition);border:1px solid transparent}
+    .scope-card:hover{border-color:var(--color-care-green);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
+    .scope-icon{width:64px;height:64px;background:var(--color-care-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+    .scope-icon svg{width:28px;height:28px;stroke:var(--color-care-green);fill:none;stroke-width:1.5}
+    .scope-card h4{font-size:18px;font-weight:600;margin-bottom:12px}
+    .scope-card p{font-size:13px;color:var(--color-gray-mid);line-height:1.7}
+
+    .services-section{padding:120px 5%;background:var(--color-white)}
+    .services-inner{max-width:1200px;margin:0 auto}
+    .services-header{margin-bottom:64px}
+    .services-tabs{display:flex;gap:8px;margin-bottom:48px;flex-wrap:wrap;border-bottom:1px solid rgba(0,0,0,0.08);padding-bottom:24px}
+    .tab-btn{padding:12px 28px;font-size:13px;letter-spacing:1px;border:1px solid rgba(0,0,0,0.1);background:transparent;cursor:pointer;transition:var(--transition);font-family:var(--font-cn);border-radius:2px}
+    .tab-btn.active,.tab-btn:hover{background:var(--color-care-green);color:var(--color-white);border-color:var(--color-care-green)}
+    .tab-content{display:none}
+    .tab-content.active{display:block}
+
+    .service-card{background:var(--color-white);border:1px solid rgba(0,0,0,0.08);overflow:hidden;margin-bottom:24px;transition:var(--transition)}
+    .service-card:hover{border-color:var(--color-care-green)}
+    .service-card-header{display:flex;align-items:center;gap:20px;padding:28px 32px;cursor:pointer}
+    .service-card-header:hover{background:var(--color-gray-light)}
+    .service-card-icon{width:48px;height:48px;background:var(--color-care-light);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .service-card-icon svg{width:24px;height:24px;stroke:var(--color-care-green);fill:none;stroke-width:1.5}
+    .service-card-icon.green{background:var(--color-care-green)}
+    .service-card-icon.green svg{stroke:var(--color-white)}
+    .service-card-info{flex:1}
+    .service-card-title{font-size:18px;font-weight:600;margin-bottom:4px}
+    .service-card-subtitle{font-size:12px;color:var(--color-gray-mid);letter-spacing:1px}
+    .service-card-arrow{font-size:20px;color:var(--color-gray-mid);transition:transform 0.3s}
+    .service-card.expanded .service-card-arrow{transform:rotate(180deg)}
+    .service-card-body{display:none;padding:0 32px 32px;border-top:1px solid rgba(0,0,0,0.05)}
+    .service-card.expanded .service-card-body{display:block}
+    .service-card-body h5{font-size:14px;font-weight:600;color:var(--color-care-green);margin:24px 0 16px;letter-spacing:1px}
+    .service-card-body p{font-size:14px;color:var(--color-gray-dark);line-height:1.9;margin-bottom:16px}
+    .service-card-body ul{list-style:none;padding:0}
+    .service-card-body li{font-size:14px;color:var(--color-gray-dark);padding:8px 0;padding-left:24px;position:relative;line-height:1.7}
+    .service-card-body li::before{content:"✓";position:absolute;left:0;color:var(--color-care-green);font-weight:bold}
+    .service-highlight{background:var(--color-care-light);padding:24px;border-radius:4px;margin-top:20px}
+    .service-highlight h5{color:var(--color-care-green);margin-bottom:12px}
+    .service-highlight p{color:var(--color-gray-dark);margin-bottom:0}
+
+    .warranty-section{padding:100px 5%;background:var(--color-black)}
+    .warranty-inner{max-width:1200px;margin:0 auto}
+    .warranty-header{margin-bottom:64px}
+    .warranty-header .section-label{color:rgba(46,125,50,0.7)}
+    .warranty-header .section-title{color:var(--color-white)}
+    .warranty-header .section-subtitle{color:rgba(255,255,255,0.6)}
+    .warranty-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,0.05)}
+    .warranty-card{background:var(--color-black);padding:40px 32px;text-align:center;transition:var(--transition);border:1px solid transparent}
+    .warranty-card:hover{border-color:var(--color-care-green);background:rgba(46,125,50,0.1)}
+    .warranty-years{font-size:56px;font-weight:800;color:var(--color-care-green);font-family:var(--font-en);line-height:1;margin-bottom:8px}
+    .warranty-years span{font-size:24px}
+    .warranty-product{font-size:16px;font-weight:600;color:var(--color-white);margin-bottom:8px}
+    .warranty-desc{font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:1px;margin-bottom:20px}
+    .warranty-range{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7}
+    .warranty-badge{display:inline-block;background:var(--color-care-green);color:var(--color-white);font-size:10px;padding:4px 12px;border-radius:20px;margin-top:16px;letter-spacing:1px}
+
+    .flow-section{padding:100px 5%;background:var(--color-gray-light)}
+    .flow-inner{max-width:1200px;margin:0 auto}
+    .flow-header{margin-bottom:64px}
+    .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+    .flow-steps::before{content:"";position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--color-care-green),rgba(46,125,50,0.3));z-index:0}
+    .flow-step{text-align:center;position:relative;z-index:1}
+    .flow-step-num{width:80px;height:80px;background:var(--color-care-green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:28px;font-weight:700;color:var(--color-white);font-family:var(--font-en);border:4px solid var(--color-white);box-shadow:0 4px 20px rgba(46,125,50,0.3)}
+    .flow-step h4{font-size:16px;font-weight:600;margin-bottom:12px}
+    .flow-step p{font-size:13px;color:var(--color-gray-mid);line-height:1.7;max-width:200px;margin:0 auto}
+
+    .sla-section{padding:100px 5%;background:var(--color-white)}
+    .sla-inner{max-width:1200px;margin:0 auto}
+    .sla-header{margin-bottom:64px}
+    .sla-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .sla-card{background:var(--color-white);border:1px solid rgba(0,0,0,0.08);padding:40px;transition:var(--transition)}
+    .sla-card:hover{border-color:var(--color-care-green);box-shadow:0 8px 30px rgba(0,0,0,0.06)}
+    .sla-card-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(0,0,0,0.06)}
+    .sla-card-icon{width:48px;height:48px;background:var(--color-care-light);border-radius:8px;display:flex;align-items:center;justify-content:center}
+    .sla-card-icon svg{width:24px;height:24px;stroke:var(--color-care-green);fill:none;stroke-width:1.5}
+    .sla-card h4{font-size:18px;font-weight:600}
+    .sla-items{display:flex;flex-direction:column;gap:12px}
+    .sla-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px dashed rgba(0,0,0,0.06)}
+    .sla-item:last-child{border-bottom:none}
+    .sla-item-name{font-size:14px;color:var(--color-gray-dark)}
+    .sla-item-value{font-size:16px;font-weight:600;color:var(--color-care-green);font-family:var(--font-en)}
+
+    .contact-section{padding:100px 5%;background:var(--color-black)}
+    .contact-inner{max-width:800px;margin:0 auto;text-align:center}
+    .contact-inner .section-label{color:var(--color-care-green)}
+    .contact-inner .section-title{color:var(--color-white)}
+    .contact-inner .section-subtitle{color:rgba(255,255,255,0.6);max-width:600px;margin:0 auto 48px}
+    .contact-cta{display:inline-flex;align-items:center;gap:12px;padding:18px 48px;font-size:14px;letter-spacing:2px;font-weight:500;background:var(--color-care-green);color:var(--color-white);border:none;cursor:pointer;transition:var(--transition);font-family:var(--font-cn);border-radius:2px}
+    .contact-cta:hover{background:#1B5E20;transform:translateY(-2px)}
+    .contact-cta svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+    .contact-note{margin-top:32px;font-size:13px;color:rgba(255,255,255,0.4)}
+
+    .footer{background:var(--color-black);padding:60px 5% 40px;border-top:1px solid rgba(255,255,255,0.08)}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+    .footer-logo{display:flex;align-items:center;gap:12px}
+    .footer-logo-mark{width:36px;height:36px;background:var(--color-white);display:flex;align-items:center;justify-content:center;border-radius:2px}
+    .footer-logo-mark span{font-size:14px;font-weight:700;letter-spacing:2px;color:var(--color-black);font-family:var(--font-en)}
+    .footer-brand{font-size:14px;font-weight:600;color:var(--color-white)}
+    .footer-copyright{font-size:12px;color:rgba(255,255,255,0.3)}
+
+    .fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .fade-in.visible{opacity:1;transform:translateY(0)}
+
+    @media(max-width:1024px){
+      .care-intro-inner{grid-template-columns:1fr}
+      .scope-grid{grid-template-columns:repeat(2,1fr)}
+      .warranty-grid{grid-template-columns:repeat(2,1fr)}
+      .flow-steps{grid-template-columns:repeat(2,1fr)}
+      .flow-steps::before{display:none}
+    }
+    @media(max-width:768px){
+      .nav-links{display:none}
+      .scope-grid,.warranty-grid,.flow-steps,.sla-grid{grid-template-columns:1fr}
+      .footer-inner{flex-direction:column;gap:20px;text-align:center}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav" id="mainNav">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-mark"><span>ITO</span></div>
+    <div class="nav-logo-text">
+      <span class="brand-en">ITO</span>
+      <span class="brand-cn">伊稻（上海）商业有限公司</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html">产品中心</a>
+    <a href="index.html#about">关于我们</a>
+    <a href="#" class="active">ITO CARE</a>
+    <a href="index.html#contact">联系我们</a>
+    <a href="#" class="nav-cta">立即注册</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-care-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-bg-text">CARE</div>
+  <div class="hero-content">
+    <div class="hero-label">ITO CARE 服务体系</div>
+    <h1 class="hero-title">让每一次旅行<br>都有<em>安心守护</em></h1>
+    <p class="hero-desc">"ITO CARE"是ITO为用户提供便捷、可视的高品质服务品牌，服务涵盖360 CARE换新、2/5/10年免费保修、以旧换新等全生命周期的服务权益，始终以客户为导向，让信赖一路随行。</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn btn-care btn-arrow">了解服务详情</a>
+      <a href="#scope" class="btn btn-ghost">查看适用产品</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<section class="care-intro" id="intro">
+  <div class="care-intro-inner">
+    <div class="care-intro-visual fade-in">
+      <div class="care-intro-box">
+        <div class="icon-circle">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>360 CARE</h3>
+        <p>在ITO官方渠道购买的ITO主线商品，自购买之日起，360天内无忧换新（GINKGO系列享720天换新保障）。</p>
+      </div>
+    </div>
+    <div class="care-intro-text fade-in">
+      <div class="section-label">服务定位</div>
+      <h2 class="section-title">值得信赖的<br>全程服务保障</h2>
+      <p class="care-intro-text">在旅行商品竞争加剧、差异趋同的背景下，服务差异化的重要性愈加凸显。ITO着力构建让用户信赖的服务体系，建立服务产品的管理规范，始终保持以客户为导向的服务创新能力，塑造让客户信赖的品牌心智。</p>
+      <div class="care-intro-highlight">
+        <h4>核心价值</h4>
+        <p>覆盖产品全生命周期，从购买到使用，从保修到换新，提供一站式品质服务，让每一件ITO产品都能持久陪伴您的旅途。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="scope-section" id="scope">
+  <div class="scope-inner">
+    <div class="scope-header fade-in">
+      <div class="section-label">服务范围</div>
+      <h2 class="section-title">覆盖全面的服务体系</h2>
+    </div>
+    <div class="scope-grid">
+      <div class="scope-card fade-in">
+        <div class="scope-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h4>旅行箱系列</h4>
+        <p>CLASSIC、GINKGO、PISTACHIO等全系列主线行李箱产品</p>
+      </div>
+      <div class="scope-card fade-in">
+        <div class="scope-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
+        </div>
+        <h4>包袋系列</h4>
+        <p>双肩包、斜挎包、手提包等全系列包袋产品</p>
+      </div>
+      <div class="scope-card fade-in">
+        <div class="scope-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4>360天换新</h4>
+        <p>购买360天内（ GINKGO 720天）可享受一次免费换新服务</p>
+      </div>
+      <div class="scope-card fade-in">
+        <div class="scope-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h4>2-10年保修</h4>
+        <p>根据产品系列享受2年、5年或10年不限次数免费保修</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services-section" id="services">
+  <div class="services-inner">
+    <div class="services-header fade-in">
+      <div class="section-label">服务详情</div>
+      <h2 class="section-title">360 CARE 换新服务</h2>
+      <p class="section-subtitle">在ITO官方渠道购买的ITO主线商品，自购买之日起360天内（ GINKGO 720天）可享受一次免费换新服务。</p>
+    </div>
+    
+    <div class="services-tabs fade-in">
+      <button class="tab-btn active" data-tab="360">360 CARE</button>
+      <button class="tab-btn" data-tab="warranty">保修服务</button>
+      <button class="tab-btn" data-tab="tradein">以旧换新</button>
+    </div>
+
+    <div class="tab-content active" id="tab-360">
+      <div class="service-card expanded">
+        <div class="service-card-header" onclick="toggleService(this)">
+          <div class="service-card-icon green">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+          </div>
+          <div class="service-card-info">
+            <div class="service-card-title">信用换新（先发后收）</div>
+            <div class="service-card-subtitle">极速服务体验</div>
+          </div>
+          <span class="service-card-arrow">▼</span>
+        </div>
+        <div class="service-card-body">
+          <h5>服务特点</h5>
+          <p>为快速响应用户需求，ITO提供先发新品，后收回旧箱的极速服务。</p>
+          <ul>
+            <li>用户在填写申请的同时需进行信用分授权</li>
+            <li>在ITO收回用户旧箱并验收确认后，信用授权将自动释放</li>
+            <li>优先为用户匹配同城市库存，提供同城闪送服务</li>
+            <li>闪送费用由用户承担，将基于用户地址给出合理估价</li>
+          </ul>
+          <div class="service-highlight">
+            <h5>承诺时效</h5>
+            <p>服务单确认后24小时内发出换新商品</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-header" onclick="toggleService(this)">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+          </div>
+          <div class="service-card-info">
+            <div class="service-card-title">非信用换新（先收后发）</div>
+            <div class="service-card-subtitle">常规换新服务</div>
+          </div>
+          <span class="service-card-arrow">▼</span>
+        </div>
+        <div class="service-card-body">
+          <h5>服务特点</h5>
+          <p>除"信用换新"服务外，ITO仍将提供常规的"非信用换新"服务。</p>
+          <ul>
+            <li>用户将旧品寄回ITO</li>
+            <li>ITO收到旧品并验收确认后</li>
+            <li>及时为用户发出新品</li>
+          </ul>
+          <div class="service-highlight">
+            <h5>承诺时效</h5>
+            <p>旧品签收后24小时内发出换新商品</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-warranty">
+      <div class="service-card expanded">
+        <div class="service-card-header" onclick="toggleService(this)">
+          <div class="service-card-icon green">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <div class="service-card-info">
+            <div class="service-card-title">自助维修服务</div>
+            <div class="service-card-subtitle">DIY维修体验</div>
+          </div>
+          <span class="service-card-arrow">▼</span>
+        </div>
+        <div class="service-card-body">
+          <h5>服务说明</h5>
+          <p>针对愿意尝试维修体验的用户，ITO可提供自助维修服务。用户在小程序的"申请维修"中选择"自助维修"方式。</p>
+          <ul>
+            <li>服务单确认后24h内寄出维修服务包</li>
+            <li>包含对应配件和工具</li>
+            <li>可在小程序查看自助维修视频</li>
+            <li>可维修配件：轮子、把手、站脚、密码锁等</li>
+          </ul>
+          <div class="service-highlight">
+            <h5>维修服务包内容</h5>
+            <p>轮子×2 + 专用螺丝刀×1 + 螺丝×10 / 把手×1 + 专用螺丝刀×1 + 螺丝×5 等</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-header" onclick="toggleService(this)">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="service-card-info">
+            <div class="service-card-title">门店维修</div>
+            <div class="service-card-subtitle">就近专业服务</div>
+          </div>
+          <span class="service-card-arrow">▼</span>
+        </div>
+        <div class="service-card-body">
+          <h5>服务说明</h5>
+          <p>用户在申请维修时可选择就近门店维修，服务单确认后前往预约门店现场维修。</p>
+          <ul>
+            <li>门店服务可预约下单日起的可预约时段</li>
+            <li>预约时自动校验门店库存</li>
+            <li>仅展示有库存时段</li>
+            <li>向门店顾问推送预约信息</li>
+          </ul>
+          <div class="service-highlight">
+            <h5>承诺时效</h5>
+            <p>预约当日完结（用户原因除外）</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card-header" onclick="toggleService(this)">
+          <div class="service-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <div class="service-card-info">
+            <div class="service-card-title">返厂维修</div>
+            <div class="service-card-subtitle">原厂品质保障</div>
+          </div>
+          <span class="service-card-arrow">▼</span>
+        </div>
+        <div class="service-card-body">
+          <h5>服务说明</h5>
+          <p>用户在申请无法自助维修项时，ITO支持返厂维修。</p>
+          <ul>
+            <li><strong>需要备用箱：</strong>提供备用箱使用，旧品维修完成后寄回，同时用户寄还备用箱</li>
+            <li><strong>无需备用箱：</strong>直接寄回旧品，维修完成后寄回</li>
+            <li><strong>不可维修：</strong>经工厂检测无法维修的产品，提供以换代修服务</li>
+          </ul>
+          <div class="service-highlight">
+            <h5>承诺时效</h5>
+            <p>旧品签收后168小时内完成维修并发货</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-tradein">
+      <div class="service-card expanded">
+        <div class="service-card-header" onclick="toggleService(this)">
+          <div class="service-card-icon green">
+            <svg viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+          </div>
+          <div class="service-card-info">
+            <div class="service-card-title">以换代修</div>
+            <div class="service-card-subtitle">快速恢复使用</div>
+          </div>
+          <span class="service-card-arrow">▼</span>
+        </div>
+        <div class="service-card-body">
+          <h5>适用情况</h5>
+          <p>经工厂检测确认产品无法通过维修恢复功能时，提供以换代修服务。</p>
+          <ul>
+            <li>适用产品：拉链、合页等无法现场维修的配件</li>
+            <li>提供官翻品或同款新品更换</li>
+            <li>服务单确认后24h内发出换货</li>
+          </ul>
+          <div class="service-highlight">
+            <h5>承诺时效</h5>
+            <p>官翻品发货：服务单确认后24小时内</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="warranty-section" id="warranty">
+  <div class="warranty-inner">
+    <div class="warranty-header fade-in">
+      <div class="section-label">保修年限</div>
+      <h2 class="section-title">按产品系列的保修政策</h2>
+      <p class="section-subtitle">根据各产品系列定位，提供不同年限的免费保修服务</p>
+    </div>
+    <div class="warranty-grid">
+      <div class="warranty-card fade-in">
+        <div class="warranty-years">10<span>年</span></div>
+        <div class="warranty-product">GINKGO 系列</div>
+        <div class="warranty-desc">高端定位 · 十年质保</div>
+        <div class="warranty-range">轮子、拉杆、密码锁、把手、站脚、拉链、合页</div>
+        <span class="warranty-badge">旗舰服务</span>
+      </div>
+      <div class="warranty-card fade-in">
+        <div class="warranty-years">5<span>年</span></div>
+        <div class="warranty-product">PISTACHIO 系列</div>
+        <div class="warranty-desc">经典系列 · 五年质保</div>
+        <div class="warranty-range">轮子、拉杆、密码锁、把手、站脚、拉链、合页</div>
+        <span class="warranty-badge">长期保障</span>
+      </div>
+      <div class="warranty-card fade-in">
+        <div class="warranty-years">5<span>年</span></div>
+        <div class="warranty-product">包袋系列</div>
+        <div class="warranty-desc">配饰系列 · 五年质保</div>
+        <div class="warranty-range">拉链、五金件（提手、调节扣不包含新品系列）</div>
+        <span class="warranty-badge">长期保障</span>
+      </div>
+      <div class="warranty-card fade-in">
+        <div class="warranty-years">2<span>年</span></div>
+        <div class="warranty-product">CLASSIC 系列</div>
+        <div class="warranty-desc">入门系列 · 二年质保</div>
+        <div class="warranty-range">轮子、拉杆、密码锁、把手、站脚、拉链、合页</div>
+        <span class="warranty-badge">基础保障</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow-section" id="flow">
+  <div class="flow-inner">
+    <div class="flow-header fade-in">
+      <div class="section-label">服务流程</div>
+      <h2 class="section-title">简单四步，享受服务</h2>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step fade-in">
+        <div class="flow-step-num">1</div>
+        <h4>提交申请</h4>
+        <p>通过ITO小程序进入ITO CARE服务界面，完成换新申请填写，上传损坏照片</p>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-step-num">2</div>
+        <h4>评估处理</h4>
+        <p>官方服务人员在2h内进行评估，回复处理方案并确认服务方式</p>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-step-num">3</div>
+        <h4>商品发出</h4>
+        <p>信用换新24h内发出新品 / 非信用换新在旧品签收后24h内发出</p>
+      </div>
+      <div class="flow-step fade-in">
+        <div class="flow-step-num">4</div>
+        <h4>签收确认</h4>
+        <p>用户可通过小程序查看物流情况，到货后及时查验换新商品</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sla-section" id="sla">
+  <div class="sla-inner">
+    <div class="sla-header fade-in">
+      <div class="section-label">服务承诺</div>
+      <h2 class="section-title">SLA 服务标准</h2>
+    </div>
+    <div class="sla-grid">
+      <div class="sla-card fade-in">
+        <div class="sla-card-header">
+          <div class="sla-card-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          </div>
+          <h4>快递服务</h4>
+        </div>
+        <div class="sla-items">
+          <div class="sla-item">
+            <span class="sla-item-name">首次响应时长</span>
+            <span class="sla-item-value">2h 内</span>
+          </div>
+          <div class="sla-item">
+            <span class="sla-item-name">新品发货（信用）</span>
+            <span class="sla-item-value">24h 内</span>
+          </div>
+          <div class="sla-item">
+            <span class="sla-item-name">新品发货（非信用）</span>
+            <span class="sla-item-value">24h 内</span>
+          </div>
+        </div>
+      </div>
+      <div class="sla-card fade-in">
+        <div class="sla-card-header">
+          <div class="sla-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          </div>
+          <h4>门店服务</h4>
+        </div>
+        <div class="sla-items">
+          <div class="sla-item">
+            <span class="sla-item-name">首次响应时长</span>
+            <span class="sla-item-value">2h 内</span>
+          </div>
+          <div class="sla-item">
+            <span class="sla-item-name">服务处理时长</span>
+            <span class="sla-item-value">预约当日</span>
+          </div>
+        </div>
+      </div>
+      <div class="sla-card fade-in">
+        <div class="sla-card-header">
+          <div class="sla-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          </div>
+          <h4>自助服务</h4>
+        </div>
+        <div class="sla-items">
+          <div class="sla-item">
+            <span class="sla-item-name">首次响应时长</span>
+            <span class="sla-item-value">2h 内</span>
+          </div>
+          <div class="sla-item">
+            <span class="sla-item-name">配件包发货</span>
+            <span class="sla-item-value">24h 内</span>
+          </div>
+        </div>
+      </div>
+      <div class="sla-card fade-in">
+        <div class="sla-card-header">
+          <div class="sla-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          </div>
+          <h4>返厂维修</h4>
+        </div>
+        <div class="sla-items">
+          <div class="sla-item">
+            <span class="sla-item-name">首次响应时长</span>
+            <span class="sla-item-value">2h 内</span>
+          </div>
+          <div class="sla-item">
+            <span class="sla-item-name">备用箱/旧品发货</span>
+            <span class="sla-item-value">168h 内</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="contact-inner fade-in">
+    <div class="section-label">开始体验</div>
+    <h2 class="section-title">立即享受 ITO CARE 服务</h2>
+    <p class="section-subtitle">扫描产品上的二维码完成专属身份绑定，即可享受全方位的服务保障</p>
+    <a href="#" class="contact-cta">
+      前往 ITO 小程序
+      <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+    </a>
+    <p class="contact-note">有效地域：大陆地区全量服务 · 港澳台及海外提供远程诊断+维修邮寄支持</p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="footer-logo-mark"><span>ITO</span></div>
+      <span class="footer-brand">ITO 伊稻</span>
+    </div>
+    <p class="footer-copyright">© 2024 ITO 伊稻（上海）商业有限公司 | ITO CARE 服务产品</p>
+  </div>
+</footer>
+
+<script>
+function toggleService(header) {
+  const card = header.parentElement;
+  card.classList.toggle('expanded');
+}
+
+document.querySelectorAll('.tab-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    this.classList.add('active');
+    document.getElementById('tab-' + this.dataset.tab).classList.add('active');
+  });
+});
+
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.fade-in').forEach(function(el) {
+  observer.observe(el);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
