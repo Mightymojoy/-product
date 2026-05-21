@@ -1289,7 +1289,12 @@ footer = '''
 html_body = nav + home_page + products_page + care_page + about_page + contact_page + footer
 
 # Write full HTML with complete structure
+# 输出到 website 目录（本地管理用）
 with open('d:/ITO产品手册/website/index.html', 'w', encoding='utf-8') as f:
+    f.write(HTML_HEAD + html_body + HTML_TAIL)
+
+# 同时输出到根目录（GitHub Pages 实际读取路径）
+with open('d:/ITO产品手册/index.html', 'w', encoding='utf-8') as f:
     f.write(HTML_HEAD + html_body + HTML_TAIL)
 
 print('Done! Products:', len(products))
